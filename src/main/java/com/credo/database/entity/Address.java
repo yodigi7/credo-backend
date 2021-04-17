@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -37,4 +38,11 @@ public class Address extends BaseEntity {
 
     @OneToOne(mappedBy = "address", fetch = FetchType.LAZY)
     Person person;
+
+    public boolean similar(Address address) {
+        return ((StringUtils.isNotBlank(address.streetAddress) && address.streetAddress.equalsIgnoreCase(streetAddress)) || StringUtils.isBlank(address.streetAddress)) &&
+                ((StringUtils.isNotBlank(address.city) && address.city.equalsIgnoreCase(city)) || StringUtils.isBlank(address.city)) &&
+                ((StringUtils.isNotBlank(address.state) && address.state.equalsIgnoreCase(state)) || StringUtils.isNotBlank(address.state)) &&
+                ((StringUtils.isNotBlank(address.zipcode) && address.zipcode.equalsIgnoreCase(zipcode)) || StringUtils.isBlank(address.zipcode));
+    }
 }

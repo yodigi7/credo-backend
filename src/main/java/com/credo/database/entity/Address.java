@@ -7,14 +7,11 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.apache.commons.lang3.StringUtils;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.math.BigInteger;
@@ -36,6 +33,7 @@ public class Address extends BaseEntity {
     String state;
     String zipcode;
 
+    @ToString.Exclude
     @OneToOne(mappedBy = "address", fetch = FetchType.LAZY)
     Person person;
 

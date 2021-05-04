@@ -44,7 +44,6 @@ public class DatabaseController {
         ByteArrayResource resource = new ByteArrayResource(outputStream.toByteArray());
         return ResponseEntity.ok()
                 .contentLength(resource.contentLength())
-                // .contentType(MediaType.parseMediaType("application/vnd.ms-excel"))
                 .contentType(
                         MediaType.parseMediaType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"))
                 .body(resource);

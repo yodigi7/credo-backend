@@ -1,12 +1,15 @@
 package com.credo.database.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.apache.commons.lang3.StringUtils;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -34,7 +37,9 @@ public class Address extends BaseEntity {
     String zipcode;
 
     @ToString.Exclude
-    @OneToOne(mappedBy = "address", fetch = FetchType.LAZY)
+    @EqualsAndHashCode.Exclude
+    @JsonIgnore
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "address", fetch = FetchType.LAZY)
     Person person;
 
     public boolean similar(Address address) {

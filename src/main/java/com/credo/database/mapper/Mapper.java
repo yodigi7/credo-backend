@@ -1,22 +1,62 @@
 package com.credo.database.mapper;
 
 import com.credo.database.dto.AddressDto;
+import com.credo.database.dto.DonationDto;
+import com.credo.database.dto.EmailDto;
+import com.credo.database.dto.EventDto;
 import com.credo.database.dto.PersonDto;
+import com.credo.database.dto.PhoneDto;
 import com.credo.database.entity.Address;
+import com.credo.database.entity.Donation;
+import com.credo.database.entity.Email;
+import com.credo.database.entity.Event;
 import com.credo.database.entity.Person;
+import com.credo.database.entity.Phone;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Collections;
+import java.util.Optional;
+
 @Component
 public class Mapper {
-    @Autowired ModelMapper modelMapper;
-    
+    @Autowired
+    ModelMapper modelMapper;
+
     public Person convertToEntity(PersonDto personDto) {
-        return modelMapper.map(personDto, Person.class);
+        Person person = modelMapper.map(personDto, Person.class);
+        if (person.getAddress() != null) {
+            person.getAddress().setPerson(person);
+        }
+        Optional.ofNullable(person.getPhones()).orElse(Collections.emptyList())
+                .forEach(phone -> phone.setPerson(person));
+        Optional.ofNullable(person.getEvents()).orElse(Collections.emptyList())
+                .forEach(event -> event.setPerson(person));
+        Optional.ofNullable(person.getEmails()).orElse(Collections.emptyList())
+                .forEach(email -> email.setPerson(person));
+        Optional.ofNullable(person.getDonations()).orElse(Collections.emptyList())
+                .forEach(donation -> donation.setPerson(person));
+        return person;
     }
 
     public Address convertToEntity(AddressDto addressDto) {
         return modelMapper.map(addressDto, Address.class);
+    }
+
+    public Phone convertToEntity(PhoneDto phoneDto) {
+        return modelMapper.map(phoneDto, Phone.class);
+    }
+
+    public Donation convertToEntity(DonationDto dto) {
+        return modelMapper.map(dto, Donation.class);
+    }
+
+    public Event convertToEntity(EventDto dto) {
+        return modelMapper.map(dto, Event.class);
+    }
+
+    public Email convertToEntity(EmailDto dto) {
+        return modelMapper.map(dto, Email.class);
     }
 }

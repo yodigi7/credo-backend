@@ -1,12 +1,14 @@
 package com.credo.database.service;
 
 import com.credo.database.dto.PersonDto;
-import com.credo.database.entity.Address;
 import com.credo.database.entity.Person;
 import com.credo.database.mapper.Mapper;
 import com.credo.database.repository.AddressRepository;
+import com.credo.database.repository.DonationRepository;
+import com.credo.database.repository.EmailRepository;
+import com.credo.database.repository.EventRepository;
 import com.credo.database.repository.PersonRepository;
-import org.apache.commons.lang3.ArrayUtils;
+import com.credo.database.repository.PhoneRepository;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,17 +21,24 @@ import java.util.stream.StreamSupport;
 
 @Service
 public class DatabaseService {
-    @Autowired PersonRepository personRepository;
-    @Autowired AddressRepository addressRepository;
-    @Autowired Mapper mapper;
+    @Autowired
+    PersonRepository personRepository;
+    @Autowired
+    AddressRepository addressRepository;
+    @Autowired
+    PhoneRepository phoneRepository;
+    @Autowired
+    EventRepository eventRepository;
+    @Autowired
+    DonationRepository donationRepository;
+    @Autowired
+    EmailRepository emailRepository;
+    @Autowired
+    Mapper mapper;
 
     public Person createPerson(PersonDto person) {
-        Person person1 = mapper.convertToEntity(person);
-        if (person.getAddress() != null) {
-            Address address = addressRepository.save(mapper.convertToEntity(person.getAddress()));
-            person1.setAddress(address);
-        }
-        return personRepository.save(person1);
+        return personRepository.save(
+                mapper.convertToEntity(person));
     }
 
     public List<Person> getPersons(PersonDto personDto) {

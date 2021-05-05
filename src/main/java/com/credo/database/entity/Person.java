@@ -1,10 +1,5 @@
 package com.credo.database.entity;
 
-import com.credo.database.dto.AddressDto;
-import com.credo.database.dto.DonationDto;
-import com.credo.database.dto.EmailDto;
-import com.credo.database.dto.EventDto;
-import com.credo.database.dto.PhoneDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,6 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -47,11 +43,11 @@ public class Person extends BaseEntity {
     String generalNotes;
 
     @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
-    List<Phone> phones;
+    List<Phone> phones = new ArrayList<>();
     @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
-    List<Email> emails;
+    List<Email> emails = new ArrayList<>();
     @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
-    List<Donation> donations;
+    List<Donation> donations = new ArrayList<>();
     @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
-    List<Event> events;
+    List<Event> events = new ArrayList<>();
 }

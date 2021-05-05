@@ -1,11 +1,13 @@
 package com.credo.database.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -28,11 +30,12 @@ public class Phone extends BaseEntity {
     @Id
     BigInteger id;
 
-    BigInteger phoneNumber;
+    String phoneNumber;
     String phoneType;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinColumn(name = "person_id")
     @ToString.Exclude
+    @JsonIgnore
     Person person;
 }

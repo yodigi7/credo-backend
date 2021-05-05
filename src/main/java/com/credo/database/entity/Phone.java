@@ -30,7 +30,7 @@ public class Phone extends BaseEntity {
     @Id
     BigInteger id;
 
-    BigInteger phoneNumber;
+    String phoneNumber;
     String phoneType;
 
     @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)

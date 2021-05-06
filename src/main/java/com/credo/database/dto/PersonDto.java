@@ -24,4 +24,5 @@ public class PersonDto {
     List<DonationDto> donations;
     List<EventDto> events;
     String generalNotes;
+    ParishDto parish;
 }

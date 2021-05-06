@@ -4,12 +4,14 @@ import com.credo.database.dto.AddressDto;
 import com.credo.database.dto.DonationDto;
 import com.credo.database.dto.EmailDto;
 import com.credo.database.dto.EventDto;
+import com.credo.database.dto.ParishDto;
 import com.credo.database.dto.PersonDto;
 import com.credo.database.dto.PhoneDto;
 import com.credo.database.entity.Address;
 import com.credo.database.entity.Donation;
 import com.credo.database.entity.Email;
 import com.credo.database.entity.Event;
+import com.credo.database.entity.Parish;
 import com.credo.database.entity.Person;
 import com.credo.database.entity.Phone;
 import org.modelmapper.ModelMapper;
@@ -17,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -28,6 +31,13 @@ public class Mapper {
         Person person = modelMapper.map(personDto, Person.class);
         if (person.getAddress() != null) {
             person.getAddress().setPerson(person);
+        }
+        if (person.getParish() != null) {
+            if (person.getParish().getParishioners() == null) {
+                person.getParish().setParishioners(List.of(person));
+            } else {
+                person.getParish().getParishioners().add(person);
+            }
         }
         Optional.ofNullable(person.getPhones()).orElse(Collections.emptyList())
                 .forEach(phone -> phone.setPerson(person));
@@ -58,5 +68,9 @@ public class Mapper {
 
     public Email convertToEntity(EmailDto dto) {
         return modelMapper.map(dto, Email.class);
+    }
+
+    public Parish convertToEntity(ParishDto dto) {
+        return modelMapper.map(dto, Parish.class);
     }
 }

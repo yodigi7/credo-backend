@@ -2,6 +2,8 @@
 mvnw
 mvnw.cmd
 
+*.db
+
 HELP.md
 target/
 !**/src/main/**/target/

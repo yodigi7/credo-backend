@@ -37,8 +37,8 @@ public class DatabaseService {
     Mapper mapper;
 
     public Person createPerson(PersonDto person) {
-        return personRepository.save(
-                mapper.convertToEntity(person));
+        Person person1 = mapper.convertToEntity(person);
+        return personRepository.save(person1);
     }
 
     public List<Person> getPersons(PersonDto personDto) {

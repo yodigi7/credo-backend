@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigInteger;
+import java.util.Date;
 import java.util.List;
 
 @Builder
@@ -22,13 +23,17 @@ public class PersonDto {
     String suffix;
     String membershipLevel;
     Boolean currentMember;
+    String mailingLabel;
+    String nameTag;
+    Date memberStartDate;
+    Date membershipExpirationDate;
+    String organizationName;
+    String generalNotes;
+
     AddressDto address;
     List<PhoneDto> phones;
     List<EmailDto> emails;
     List<PaymentDto> payments;
     List<EventDto> events;
-    String generalNotes;
     ParishDto parish;
-    String mailingLabel;
-    String nameTag;
 }

@@ -1,17 +1,17 @@
 package com.credo.database.mapper;
 
 import com.credo.database.dto.AddressDto;
-import com.credo.database.dto.DonationDto;
 import com.credo.database.dto.EmailDto;
 import com.credo.database.dto.EventDto;
 import com.credo.database.dto.ParishDto;
+import com.credo.database.dto.PaymentDto;
 import com.credo.database.dto.PersonDto;
 import com.credo.database.dto.PhoneDto;
 import com.credo.database.entity.Address;
-import com.credo.database.entity.Donation;
 import com.credo.database.entity.Email;
 import com.credo.database.entity.Event;
 import com.credo.database.entity.Parish;
+import com.credo.database.entity.Payment;
 import com.credo.database.entity.Person;
 import com.credo.database.entity.Phone;
 import org.modelmapper.ModelMapper;
@@ -45,8 +45,8 @@ public class Mapper {
                 .forEach(event -> event.setPerson(person));
         Optional.ofNullable(person.getEmails()).orElse(Collections.emptyList())
                 .forEach(email -> email.setPerson(person));
-        Optional.ofNullable(person.getDonations()).orElse(Collections.emptyList())
-                .forEach(donation -> donation.setPerson(person));
+        Optional.ofNullable(person.getPayments()).orElse(Collections.emptyList())
+                .forEach(payment -> payment.setPerson(person));
         return person;
     }
 
@@ -58,8 +58,8 @@ public class Mapper {
         return modelMapper.map(phoneDto, Phone.class);
     }
 
-    public Donation convertToEntity(DonationDto dto) {
-        return modelMapper.map(dto, Donation.class);
+    public Payment convertToEntity(PaymentDto dto) {
+        return modelMapper.map(dto, Payment.class);
     }
 
     public Event convertToEntity(EventDto dto) {

@@ -25,8 +25,10 @@ public class PersonDto {
     AddressDto address;
     List<PhoneDto> phones;
     List<EmailDto> emails;
-    List<DonationDto> donations;
+    List<PaymentDto> payments;
     List<EventDto> events;
     String generalNotes;
     ParishDto parish;
+    String mailingLabel;
+    String nameTag;
 }

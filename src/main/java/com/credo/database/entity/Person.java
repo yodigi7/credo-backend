@@ -41,6 +41,8 @@ public class Person extends BaseEntity {
     String suffix;
     String membershipLevel;
     Boolean currentMember;
+    String mailingLabel;
+    String nameTag;
     @OneToOne(cascade = CascadeType.ALL)
     Address address;
     @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
@@ -53,7 +55,7 @@ public class Person extends BaseEntity {
     @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
     List<Email> emails = new ArrayList<>();
     @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
-    List<Donation> donations = new ArrayList<>();
+    List<Payment> payments = new ArrayList<>();
     @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
     List<Event> events = new ArrayList<>();
 }

@@ -11,8 +11,8 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DonationDto {
-    Double donationAmount;
-    Date donationDate;
-    String donationNotes;
+public class PaymentDto {
+    Double paymentAmount;
+    Date paymentDate;
+    String paymentNotes;
 }

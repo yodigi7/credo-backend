@@ -31,9 +31,9 @@ public class Payment extends BaseEntity {
     @Id
     BigInteger id;
 
-    Double paymentAmount;
-    Date paymentDate;
-    String paymentNotes;
+    Double amount;
+    Date date;
+    String notes;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "person_id")

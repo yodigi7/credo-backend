@@ -12,7 +12,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PaymentDto {
-    Double paymentAmount;
-    Date paymentDate;
-    String paymentNotes;
+    Double amount;
+    Date date;
+    String notes;
 }

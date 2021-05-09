@@ -11,5 +11,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class EmailDto {
     String email;
-    String emailType;
+    String type;
 }

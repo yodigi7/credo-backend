@@ -31,7 +31,7 @@ public class Email extends BaseEntity {
     BigInteger id;
 
     String email;
-    String emailType;
+    String type;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "person_id")

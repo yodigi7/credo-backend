@@ -31,8 +31,8 @@ public class Event extends BaseEntity {
     @Id
     BigInteger id;
 
-    String eventName;
-    Date eventDate;
+    String name;
+    Date date;
     String amount;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)

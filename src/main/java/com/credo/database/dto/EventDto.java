@@ -12,7 +12,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class EventDto {
-    String eventName;
-    Date eventDate;
+    String name;
+    Date date;
     String amount;
 }

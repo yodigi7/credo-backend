@@ -11,5 +11,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class PhoneDto {
     String phoneNumber;
-    String phoneType;
+    String type;
 }

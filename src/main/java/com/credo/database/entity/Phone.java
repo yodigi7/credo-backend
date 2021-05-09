@@ -31,7 +31,7 @@ public class Phone extends BaseEntity {
     BigInteger id;
 
     String phoneNumber;
-    String phoneType;
+    String type;
 
     @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinColumn(name = "person_id")

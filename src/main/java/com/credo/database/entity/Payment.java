@@ -25,15 +25,15 @@ import java.util.Date;
 @ToString
 @Builder
 @Entity
-@Table(name = "donation")
-public class Donation extends BaseEntity {
+@Table(name = "payment")
+public class Payment extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     BigInteger id;
 
-    Double donationAmount;
-    Date donationDate;
-    String donationNotes;
+    Double amount;
+    Date date;
+    String notes;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "person_id")

@@ -63,7 +63,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/database").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
-                // .csrf().disable()
                 .httpBasic()
                 .and()
                 .formLogin();

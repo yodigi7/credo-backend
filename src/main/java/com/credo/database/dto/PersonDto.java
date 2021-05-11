@@ -25,7 +25,7 @@ public class PersonDto {
     Boolean currentMember;
     String mailingLabel;
     String nameTag;
-    Date memberStartDate;
+    Date membershipStartDate;
     Date membershipExpirationDate;
     String organizationName;
     String generalNotes;

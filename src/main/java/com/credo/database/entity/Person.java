@@ -44,7 +44,7 @@ public class Person extends BaseEntity {
     Boolean currentMember;
     String mailingLabel;
     String nameTag;
-    Date memberStartDate;
+    Date membershipStartDate;
     Date membershipExpirationDate;
     String organizationName;
     String generalNotes;
